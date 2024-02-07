@@ -1,4 +1,4 @@
-# hello welcome to Cypress 
+# hello welcome to Cypress test
 
 ### Step Build 
 
@@ -17,4 +17,5 @@
     baseurl:"http:WareRing.com"
   }
 ``` 
+กำลังทำต่อ รอก่อนควัฟ 
 
