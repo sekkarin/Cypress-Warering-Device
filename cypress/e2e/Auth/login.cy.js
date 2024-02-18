@@ -1,12 +1,15 @@
+/// <reference types="cypress" />
 const BASE_URL = "http://localhost:5173";
 describe("Login", () => {
   it("login to webpage success fully", () => {
     cy.visit(BASE_URL);
-    cy.contains("Sign In").click();
+    cy.get(".border-r-\\[\\#20476b\\]").click();
+    // cy.contains("Sign In").click();
     cy.get("#username").type("ken");
     cy.get("#password").type("Password123");
     cy.get(".btn").click();
     cy.get("h1").should("contain", "Overview");
+
   });
   it("Login to fail when password is incorrect", () => {
     cy.visit(BASE_URL);
