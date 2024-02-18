@@ -8,7 +8,7 @@
 
     # open cypress
   $ npx cypress open 
-
+  
 ```  
 เมื่อเปิด cypress มาแล้วให้เลืก Browser มาซัก 1ตัว
  และเลือกโฟร์เดอร์ ที่ 
@@ -33,3 +33,14 @@
   cy.visit('ตามด้วย /path ที่จะเข้าถึง') 
  ```
 
+การทำ report ให้ออกมาโชว์  ลงติดตั้งตัว mochawesome  
+
+``` bash  
+  # open reporter 
+  $ npx cypress run --reporter mochawesome
+
+```
+ เมื่อรันคำสั่งแล้วนั้น จะมีโฟร์เดอร์ที่ชื่อ ---- ให้กดเข้าไปจากนั้น จะมีไฟล์ json แล้ว html
+
+  * หากกดไปที่ json จะเป็นข้อมูลที่ใช้ ในการเทส ที่จะแสดงออกมาในบางส่วน 
+  * หากกดไปที่ html ให้ไปคลิกขวา แล้ว open whit live server จะเปิด browser มาและจะแสดง report 
