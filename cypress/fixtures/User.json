@@ -1,0 +1,26 @@
+{
+  "user1": {
+    "username": "usernameTest1",
+    "firstName": "firstName",
+    "lastName": "lastName",
+    "email": "emailTest1@test.com",
+    "password": "Password1234",
+    "confirmPassword": "Password1234"
+  },
+  "user2": {
+    "username": "usernameTest2",
+    "firstName": "firstName",
+    "lastName": "lastName",
+    "email": "emailTest2@test.com",
+    "password": "Password1234",
+    "confirmPassword": "Password1234"
+  },
+  "user3": {
+    "username": "usernameTest3",
+    "firstName": "firstName",
+    "lastName": "lastName",
+    "email": "emailTest3@test.com",
+    "password": "Password1234",
+    "confirmPassword": "Password1234"
+  } 
+}

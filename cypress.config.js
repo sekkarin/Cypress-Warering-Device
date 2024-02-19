@@ -8,12 +8,14 @@ module.exports = defineConfig({
     
   },
   mocha: {
+    reporter:"nyan",
     reporter: "cypress-mochawesome",
     reporterOptions: {
       reportDir: "mochawesome-report",
       overwrite: false,
       html: true,
       json: true
-    }
+    },
+    screenshotsFolder: "cypress/report/mochawesome-report/assets"
   }
 });
