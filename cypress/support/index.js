@@ -6,3 +6,5 @@ Cypress.on("test:after:run", (test, runnable) => {
     addContext({ test }, `assets/${Cypress.spec.name}/${screenshotFileName}`);
   }
 });
+
+

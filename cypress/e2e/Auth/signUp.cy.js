@@ -1,9 +1,11 @@
 const BASE_URL = "http://localhost:5173";
 import { user1 } from "../../fixtures/User.json";
-// import { user2 } from "../../fixtures/User.json"
-describe("SignUp", () => {
-  it("sigh up to webpage success fully", () => {
+  describe("SignUp", () => {
+  // signUp Success fully
+  it("sigh up to webpage success fully", function () {
     cy.visit(BASE_URL);
+    // expect(this.inboxId).exist;
+    // expect(this.emailAddress).contains("@gmail");
     cy.get(`.border-r-\\[\\#20476b\\]`).click();
     cy.get("div:nth-child(1) > .relative > #username").type(
       `userName${new Date().getSeconds()}`
@@ -14,7 +16,11 @@ describe("SignUp", () => {
     cy.get("div:nth-child(1) > .relative > #lastName").type(
       `${user1.lastName}`
     );
-    cy.get("div:nth-child(1) > .relative > #email").type(`emailTest${new Date().getSeconds()}@test.com`);
+    cy.get("div:nth-child(1) > .relative > #email").type(
+      `emailTest${new Date().getSeconds()}@test.com`
+      // "usermailtest77@gmail.com"
+      // this.emailAddress
+    );
     cy.get("div:nth-child(1) > .relative > #password").type(
       `${user1.password}`
     );
@@ -30,9 +36,7 @@ describe("SignUp", () => {
       "exist"
     );
     cy.screenshot();
-  
   });
-
 
   // signUp fail All
   // ชื่อ user ซ้ำ
@@ -63,8 +67,9 @@ describe("SignUp", () => {
     cy.contains("username has been used").should("exist");
     cy.screenshot();
   });
-  // รหัสผ่านง่ายเกินไป
-  it("sign Up to fail password not match so Ez ",()=>{
+
+  // // รหัสผ่านง่ายเกินไป
+  it("sign Up to fail password not match so Ez ", () => {
     cy.visit(BASE_URL);
     cy.get(`.border-r-\\[\\#20476b\\]`).click();
     cy.get("div:nth-child(1) > .relative > #username").type(
@@ -77,21 +82,17 @@ describe("SignUp", () => {
       `${user1.lastName}`
     );
     cy.get("div:nth-child(1) > .relative > #email").type(`${user1.email}`);
-    cy.get("div:nth-child(1) > .relative > #password").type(
-      "passEz"
-    );
-    cy.get("div:nth-child(1) > .relative > #confirm_password").type(
-      "passEz"
-    );
+    cy.get("div:nth-child(1) > .relative > #password").type("passEz");
+    cy.get("div:nth-child(1) > .relative > #confirm_password").type("passEz");
 
     cy.get("#accept-term-btn").click();
     cy.get("div:nth-child(1) > #setup-user-submit").click();
 
     cy.contains("password too weak").should("exist");
     cy.screenshot();
-  })
+  });
 
-  // ชื่อผู้ใช้ เกิน 50  ตัว
+  // // ชื่อผู้ใช้ เกิน 50  ตัว
   it("sign up to fail username not match pattern and over 50 characters", () => {
     cy.visit(BASE_URL);
     cy.get(`.border-r-\\[\\#20476b\\]`).click();
@@ -116,10 +117,10 @@ describe("SignUp", () => {
     ).should("exist");
     cy.screenshot();
   });
-  // ชื่อผู้ใช้ไม่ตรงกับรูปแบบ
+  // // ชื่อผู้ใช้ไม่ตรงกับรูปแบบ
   it("sign up to fail username not match pattern", () => {
     cy.visit(BASE_URL);
-    
+
     cy.get(`.border-r-\\[\\#20476b\\]`).click();
     cy.get("div:nth-child(1) > .relative > #username").type(
       `usernameTest*$%^&*`
@@ -142,7 +143,7 @@ describe("SignUp", () => {
     ).should("exist");
     cy.screenshot();
   });
-  // ชื่อจริงไม่ตรงกับรูปแบบ
+  // // ชื่อจริงไม่ตรงกับรูปแบบ
   it("sigh up to fail firstName not match pattern", () => {
     cy.visit(BASE_URL);
 
@@ -166,14 +167,13 @@ describe("SignUp", () => {
     ).should("exist");
     cy.screenshot();
   });
-  // password กับ confirmPassword ไม่ตรงกัน 
-  it("sign up to fail password not match",()=>{
+
+  // password กับ confirmPassword ไม่ตรงกัน
+  it("sign up to fail password not match", () => {
     cy.visit(BASE_URL);
-    
+
     cy.get(`.border-r-\\[\\#20476b\\]`).click();
-    cy.get("div:nth-child(1) > .relative > #username").type(
-      `usernameTest`
-    );
+    cy.get("div:nth-child(1) > .relative > #username").type(`usernameTest`);
     cy.get("div:nth-child(1) > .relative > #firstName").type("firstName");
     cy.get("div:nth-child(1) > .relative > #lastName").type("lastName");
     cy.get("div:nth-child(1) > .relative > #email").type(
@@ -187,19 +187,15 @@ describe("SignUp", () => {
     cy.get("#accept-term-btn").click();
     cy.get("div:nth-child(1) > #setup-user-submit").click();
 
-    cy.contains(
-      "Confirm password should be the same password"
-    ).should("exist");
+    cy.contains("Confirm password should be the same password").should("exist");
     cy.screenshot();
   });
-  // password มีตัวอักษรพิเศษ
-  it("sign up to fail password not match pattern",()=>{
+  // // password มีตัวอักษรพิเศษ
+  it("sign up to fail password not match pattern", () => {
     cy.visit(BASE_URL);
 
     cy.get(`.border-r-\\[\\#20476b\\]`).click();
-    cy.get("div:nth-child(1) > .relative > #username").type(
-      `usernameTest`
-      );
+    cy.get("div:nth-child(1) > .relative > #username").type(`usernameTest`);
     cy.get("div:nth-child(1) > .relative > #firstName").type("firstName");
     cy.get("div:nth-child(1) > .relative > #lastName").type("lastName");
     cy.get("div:nth-child(1) > .relative > #email").type(
@@ -213,54 +209,9 @@ describe("SignUp", () => {
     cy.get("#accept-term-btn").click();
     cy.get("div:nth-child(1) > #setup-user-submit").click();
 
-    cy.contains(
-      "Confirm password should be the same password"
-    ).should("exist");
+    cy.contains("Confirm password should be the same password").should("exist");
     cy.screenshot();
   });
 
-  // fail for server
-  // it("Sign Up to fail server fail bad request 500", () => {
-  //   cy.visit(BASE_URL);
-  //   cy.get(`.border-r-\\[\\#20476b\\]`).click();
-  //   cy.get("div:nth-child(1) > .relative > #username").type(`ken`);
-  //   cy.get("div:nth-child(1) > .relative > #firstName").type("firstName1+=%^");
-  //   cy.get("div:nth-child(1) > .relative > #lastName").type("lastName");
-  //   cy.get("div:nth-child(1) > .relative > #email").type(
-  //     `emailTest${new Date().getSeconds()}@test.com`
-  //   );
-  //   cy.get("div:nth-child(1) > .relative > #password").type(`Passwrod1234`);
-  //   cy.get("div:nth-child(1) > .relative > #confirm_password").type(
-  //     `Passwrod1234`
-  //   );
-  //   cy.get("#accept-term-btn").click();
-  //   cy.get("div:nth-child(1) > #setup-user-submit").click();
-  // });
-  // emailซ้ำ
-  // it("sign Up to fail email to used",()=>{
-  //     cy.visit(BASE_URL);
-  //     cy.get(`.border-r-\\[\\#20476b\\]`).click();
-  //   cy.get("div:nth-child(1) > .relative > #username").type(
-  //     `userName${new Date().getSeconds()}`
-  //   );
-  //   cy.get("div:nth-child(1) > .relative > #firstName").type(
-  //     `${user1.firstName}`
-  //   );
-  //   cy.get("div:nth-child(1) > .relative > #lastName").type(
-  //     `${user1.lastName}`
-  //   );
-  //   cy.get("div:nth-child(1) > .relative > #email").type(`${user1.email}`);
-  //   cy.get("div:nth-child(1) > .relative > #password").type(
-  //     `${user1.password}`
-  //   );
-  //   cy.get("div:nth-child(1) > .relative > #confirm_password").type(
-  //     `${user1.confirmPassword}`
-  //   );
-  
-  //   cy.get("#accept-term-btn").click();
-  //   cy.get("div:nth-child(1) > #setup-user-submit").click();
-  
-  //   cy.contains("email has been used").should("exist");
-  //   cy.screenshot();
-  // })
+
 });
