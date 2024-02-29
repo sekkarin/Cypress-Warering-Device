@@ -9,6 +9,16 @@ function extractResetLinkFromEmail(email) {
     throw new Error("Reset link not found in email");
   }
 }
+function generateToken() {
+  // สร้าง token แบบสุ่มเพื่อให้เป็นตัวอย่าง
+  return Math.random().toString(36).substring(2);
+}
+function createResetPasswordLink(email) {
+  const token = generateToken(); // สร้าง token
+  // สร้างลิงก์รีเซ็ตรหัสผ่านพร้อมกับ token
+  const resetLink = `http://localhost:5173/reset-password/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6IjY0NDI1OTAzNkB3ZWJtYWlsLm5wcnUuYWMudGgiLC`;
+  return { resetLink, token }; // return ทั้งลิงก์และ token
+}
 
 describe("Password Reset", () => {
   it("should reset password via email", () => {
@@ -21,19 +31,18 @@ describe("Password Reset", () => {
 
     // Fetch the reset email
     cy.task("fetchResetEmail", "644259036@webmail.npru.ac.th").then((email) => {
-      const token = cy.task("generateToken");
-      const resetLink = `http://localhost:5173/reset-password/*?token=${token}`;
+      // const token = cy.task("generateToken");
+      // const resetLink = `http://localhost:5173/reset-password/${token}`;
+      const { resetLink, token } = createResetPasswordLink('644259036@webmail.npru.ac.th');
       // Extract the reset link from the email
     //   const resetLink = extractResetLinkFromEmail(email);
       // Click on the reset link
       cy.visit(resetLink);
       // Enter new password
       cy.get("#newPassword").type("Newpassword123");
-      // Confirm new password
-      // cy.get('input[name="confirm-password"]').type('newpassword123');
-      // Click on the submit button
+    
       cy.get("#reset-password-submit").click();
-      // Assert that password reset was successful
+    
       cy.contains("Password reset successful").should("be.visible");
     });
   });

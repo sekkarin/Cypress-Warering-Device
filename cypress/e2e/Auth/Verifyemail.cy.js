@@ -20,7 +20,7 @@ describe("MailSlurp Example", () => {
       cy.get("div:nth-child(1) > .relative > #username").type(`userName${new Date().getSeconds()}`);
       cy.get("div:nth-child(1) > .relative > #firstName").type(user1.firstName);
       cy.get("div:nth-child(1) > .relative > #lastName").type(user1.lastName);
-      cy.get("div:nth-child(1) > .relative > #email").type(emailAddress);
+      cy.get("div:nth-child(1) > .relative > #email").type(`emailTest${new Date().getSeconds()}@test.com`);
       cy.get("div:nth-child(1) > .relative > #password").type(user1.password);
       cy.get("div:nth-child(1) > .relative > #confirm_password").type(
         user1.confirmPassword
@@ -111,7 +111,7 @@ describe("MailSlurp Example", () => {
 //       // ทำบางอย่างเช่นลงทะเบียนหรือเรียกใช้งาน
 //       cy.visit(BASE_URL);
 //       cy.get(`.border-r-\\[\\#20476b\\]`).click();
-//       cy.get("div:nth-child(1) > .relative > #username").type("username160");
+//       cy.get("div:nth-child(1) > .relative > #username").type("username161");
 //       cy.get("div:nth-child(1) > .relative > #firstName").type(
 //         `${user1.firstName}`
 //       );
@@ -167,4 +167,3 @@ describe("MailSlurp Example", () => {
 //     });
 //   });
 // });
-
