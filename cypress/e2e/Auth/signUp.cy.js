@@ -7,24 +7,24 @@ import { user1 } from "../../fixtures/User.json";
     // expect(this.inboxId).exist;
     // expect(this.emailAddress).contains("@gmail");
     cy.get("#toggle-big-register-landing-drawer-btn").click();
-    cy.get("div:nth-child(1) > .relative > #username").type(
+    cy.get("#username").type(
       `userName${new Date().getSeconds()}`
     );
-    cy.get("div:nth-child(1) > .relative > #firstName").type(
+    cy.get(" #firstName").type(
       `${user1.firstName}`
     );
-    cy.get("div:nth-child(1) > .relative > #lastName").type(
+    cy.get(" #lastName").type(
       `${user1.lastName}`
     );
-    cy.get("div:nth-child(1) > .relative > #email").type(
+    cy.get(" #email").type(
       `emailTest${new Date().getSeconds()}@test.com`
       // "usermailtest77@gmail.com"
       // this.emailAddress
     );
-    cy.get("div:nth-child(1) > .relative > #password").type(
+    cy.get(" #password").type(
       `${user1.password}`
     );
-    cy.get("div:nth-child(1) > .relative > #confirm_password").type(
+    cy.get(" #confirm_password").type(
       `${user1.confirmPassword}`
     );
     cy.get("#agree-term-and-conditions-drawer-checkbox").click();
@@ -44,20 +44,20 @@ import { user1 } from "../../fixtures/User.json";
     cy.visit(BASE_URL);
 
     cy.get("#toggle-big-register-landing-drawer-btn").click();
-    cy.get("div:nth-child(1) > .relative > #username").type(
+    cy.get(" #username").type(
       `${user1.username}`
     );
-    cy.get("div:nth-child(1) > .relative > #firstName").type(
+    cy.get(" #firstName").type(
       `${user1.firstName}`
     );
-    cy.get("div:nth-child(1) > .relative > #lastName").type(
+    cy.get(" #lastName").type(
       `${user1.lastName}`
     );
-    cy.get("div:nth-child(1) > .relative > #email").type(`${user1.email}`);
-    cy.get("div:nth-child(1) > .relative > #password").type(
+    cy.get(" #email").type(`${user1.email}`);
+    cy.get(" #password").type(
       `${user1.password}`
     );
-    cy.get("div:nth-child(1) > .relative > #confirm_password").type(
+    cy.get(" #confirm_password").type(
       `${user1.confirmPassword}`
     );
 
@@ -72,18 +72,18 @@ import { user1 } from "../../fixtures/User.json";
   it("sign Up to fail password not match so Ez ", () => {
     cy.visit(BASE_URL);
     cy.get("#toggle-big-register-landing-drawer-btn").click();
-    cy.get("div:nth-child(1) > .relative > #username").type(
+    cy.get(" #username").type(
       `${user1.username}`
     );
-    cy.get("div:nth-child(1) > .relative > #firstName").type(
+    cy.get(" #firstName").type(
       `${user1.firstName}`
     );
-    cy.get("div:nth-child(1) > .relative > #lastName").type(
+    cy.get(" #lastName").type(
       `${user1.lastName}`
     );
-    cy.get("div:nth-child(1) > .relative > #email").type(`${user1.email}`);
-    cy.get("div:nth-child(1) > .relative > #password").type("passEz");
-    cy.get("div:nth-child(1) > .relative > #confirm_password").type("passEz");
+    cy.get(" #email").type(`${user1.email}`);
+    cy.get(" #password").type("passEz");
+    cy.get(" #confirm_password").type("passEz");
 
     cy.get("#agree-term-and-conditions-drawer-checkbox").click();
     cy.get("#setup-user-drawer-submit").click();
@@ -96,16 +96,16 @@ import { user1 } from "../../fixtures/User.json";
   it("sign up to fail username not match pattern and over 50 characters", () => {
     cy.visit(BASE_URL);
     cy.get(`#toggle-big-register-landing-drawer-btn`).click();
-    cy.get("div:nth-child(1) > .relative > #username").type(
+    cy.get(" #username").type(
       `username212345678901234567890123456789012345678901234567890`
     );
-    cy.get("div:nth-child(1) > .relative > #firstName").type("firstName");
-    cy.get("div:nth-child(1) > .relative > #lastName").type("lastName");
-    cy.get("div:nth-child(1) > .relative > #email").type(
+    cy.get(" #firstName").type("firstName");
+    cy.get(" #lastName").type("lastName");
+    cy.get(" #email").type(
       `emailTest${new Date().getSeconds()}@test.com`
     );
-    cy.get("div:nth-child(1) > .relative > #password").type(`Passwrod1234`);
-    cy.get("div:nth-child(1) > .relative > #confirm_password").type(
+    cy.get(" #password").type(`Passwrod1234`);
+    cy.get(" #confirm_password").type(
       `Passwrod1234`
     );
 
@@ -122,16 +122,16 @@ import { user1 } from "../../fixtures/User.json";
     cy.visit(BASE_URL);
 
     cy.get(`#toggle-big-register-landing-drawer-btn`).click();
-    cy.get("div:nth-child(1) > .relative > #username").type(
+    cy.get(" #username").type(
       "usernameTest*$%^&**--+-*"
     );
-    cy.get("div:nth-child(1) > .relative > #firstName").type("firstName");
-    cy.get("div:nth-child(1) > .relative > #lastName").type("lastName");
-    cy.get("div:nth-child(1) > .relative > #email").type(
+    cy.get(" #firstName").type("firstName");
+    cy.get(" #lastName").type("lastName");
+    cy.get(" #email").type(
       `emailTest${new Date().getSeconds()}@test.com`
     );
-    cy.get("div:nth-child(1) > .relative > #password").type(`Passwrod1234`);
-    cy.get("div:nth-child(1) > .relative > #confirm_password").type(
+    cy.get(" #password").type(`Passwrod1234`);
+    cy.get(" #confirm_password").type(
       `Passwrod1234`
     );
 
@@ -148,16 +148,16 @@ import { user1 } from "../../fixtures/User.json";
     cy.visit(BASE_URL);
 
     cy.get(`#toggle-big-register-landing-drawer-btn`).click();
-    cy.get("div:nth-child(1) > .relative > #username").type(`usernameTest`);
-    cy.get("div:nth-child(1) > .relative > #firstName").type(
+    cy.get(" #username").type(`usernameTest`);
+    cy.get(" #firstName").type(
       "firstName1+=%^^&*$%"
     );
-    cy.get("div:nth-child(1) > .relative > #lastName").type("lastName");
-    cy.get("div:nth-child(1) > .relative > #email").type(
+    cy.get(" #lastName").type("lastName");
+    cy.get(" #email").type(
       `emailTest${new Date().getSeconds()}@test.com`
     );
-    cy.get("div:nth-child(1) > .relative > #password").type(`Password1234`);
-    cy.get("div:nth-child(1) > .relative > #confirm_password").type(
+    cy.get(" #password").type(`Password1234`);
+    cy.get(" #confirm_password").type(
       `Password1234`
     );
     cy.get("#agree-term-and-conditions-drawer-checkbox").click();
@@ -173,14 +173,14 @@ import { user1 } from "../../fixtures/User.json";
     cy.visit(BASE_URL);
 
     cy.get("#toggle-big-register-landing-drawer-btn").click();
-    cy.get("div:nth-child(1) > .relative > #username").type(`usernameTest`);
-    cy.get("div:nth-child(1) > .relative > #firstName").type("firstName");
-    cy.get("div:nth-child(1) > .relative > #lastName").type("lastName");
-    cy.get("div:nth-child(1) > .relative > #email").type(
+    cy.get(" #username").type(`usernameTest`);
+    cy.get(" #firstName").type("firstName");
+    cy.get(" #lastName").type("lastName");
+    cy.get(" #email").type(
       `emailTest${new Date().getSeconds()}@test.com`
     );
-    cy.get("div:nth-child(1) > .relative > #password").type(`Passwrod1234`);
-    cy.get("div:nth-child(1) > .relative > #confirm_password").type(
+    cy.get(" #password").type(`Passwrod1234`);
+    cy.get(" #confirm_password").type(
       `Passwrod123433`
     );
 
