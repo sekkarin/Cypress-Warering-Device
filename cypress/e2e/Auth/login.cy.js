@@ -16,75 +16,75 @@ describe("Login", () => {
     cy.screenshot();
 
   });
-  // it("Login to fail when not verify email", () => {
-  //   cy.visit(BASE_URL);
-  //   cy.get("#toggle-big-login-landing-drawer-btn").click();
-  //   cy.get(" #username").type(`${user1.username}`);
-  //   cy.get(" #password").type(`Password123456`);
-  // // cy.get("#remember-user-drawer-checkbox").click();
-  // cy.get("#setup-user-drawer-submit").click();
-  //   cy.contains("Please verify your e-mail first").should("exist");
-  //   // cy.contains("Password is incorrect").should("exist");
-  //   cy.screenshot();
-  // });
+  it("Login to fail when not verify email", () => {
+    cy.visit(BASE_URL);
+    cy.get("#toggle-big-login-landing-drawer-btn").click();
+    cy.get(" #username").type(`${user1.username}`);
+    cy.get(" #password").type(`Password123456`);
+  // cy.get("#remember-user-drawer-checkbox").click();
+  cy.get("#setup-user-drawer-submit").click();
+    cy.contains("Please verify your e-mail first").should("exist");
+    // cy.contains("Password is incorrect").should("exist");
+    cy.screenshot();
+  });
   
-  // it("Login to fail when password is incorrect", () => {
-  //   cy.visit(BASE_URL);
-  //   cy.get("#toggle-big-login-landing-drawer-btn").click();
-  //   cy.get(" #username").type(`${user1.username}`);
-  //   cy.get(" #password").type(`fkfkfkfk`);
-  // // cy.get("#remember-user-drawer-checkbox").click();
-  // cy.get("#setup-user-drawer-submit").click();
-  //   cy.contains("Please verify your e-mail first").should("exist");
-  //   // cy.contains("Password is incorrect").should("exist");
-  //   cy.screenshot();
-  // });
+  it("Login to fail when password is incorrect", () => {
+    cy.visit(BASE_URL);
+    cy.get("#toggle-big-login-landing-drawer-btn").click();
+    cy.get(" #username").type(`${user1.username}`);
+    cy.get(" #password").type(`fkfkfkfk`);
+  // cy.get("#remember-user-drawer-checkbox").click();
+  cy.get("#setup-user-drawer-submit").click();
+    cy.contains("Please verify your e-mail first").should("exist");
+    // cy.contains("Password is incorrect").should("exist");
+    cy.screenshot();
+  });
 
   
-  // it("Login to fail when password is not long", () => {
-  //   cy.visit(BASE_URL);
-  //   cy.get("#toggle-big-login-landing-drawer-btn").click();
-  //   cy.get(" #username").type(`${user1.firstName}`);
-  //   cy.get(" #password").type("pass");
-  // // cy.get("#remember-user-drawer-checkbox").click();
-  // cy.get("#setup-user-drawer-submit").click();
-  //   cy.contains("password must be longer than or equal to 8 characters").should(
-  //     "exist"
-  //     );
-  //     cy.screenshot();
-  //   });
+  it("Login to fail when password is not long", () => {
+    cy.visit(BASE_URL);
+    cy.get("#toggle-big-login-landing-drawer-btn").click();
+    cy.get(" #username").type(`${user1.firstName}`);
+    cy.get(" #password").type("pass");
+  // cy.get("#remember-user-drawer-checkbox").click();
+  cy.get("#setup-user-drawer-submit").click();
+    cy.contains("password must be longer than or equal to 8 characters").should(
+      "exist"
+      );
+      cy.screenshot();
+    });
     
-  // it("Login to fail no have a username", () => {
-  //     cy.visit(BASE_URL);
-  //     cy.get("#toggle-big-login-landing-drawer-btn").click();
+  it("Login to fail no have a username", () => {
+      cy.visit(BASE_URL);
+      cy.get("#toggle-big-login-landing-drawer-btn").click();
       
-  //     cy.get(" #password").type(`${user1.password}`);
-  // // cy.get("#remember-user-drawer-checkbox").click();
-  // cy.get("#setup-user-drawer-submit").click();
-  //     cy.contains("Please provide all value").should("exist");
-  //     cy.screenshot();
-  //   });
+      cy.get(" #password").type(`${user1.password}`);
+  // cy.get("#remember-user-drawer-checkbox").click();
+  cy.get("#setup-user-drawer-submit").click();
+      cy.contains("Please provide all value").should("exist");
+      cy.screenshot();
+    });
     
-  // it("Login to fail no have a password", () => {
-  //     cy.visit(BASE_URL);
-  //     cy.get("#toggle-big-login-landing-drawer-btn").click();
-  //     cy.get(" #username").type(`${user1.username}`);
-  //         // cy.get("#remember-user-drawer-checkbox").click();
-  //   cy.get("#setup-user-drawer-submit").click();
-  //       cy.contains("Please provide all value").should("exist");
-  //       cy.screenshot();
-  //     });
+  it("Login to fail no have a password", () => {
+      cy.visit(BASE_URL);
+      cy.get("#toggle-big-login-landing-drawer-btn").click();
+      cy.get(" #username").type(`${user1.username}`);
+          // cy.get("#remember-user-drawer-checkbox").click();
+    cy.get("#setup-user-drawer-submit").click();
+        cy.contains("Please provide all value").should("exist");
+        cy.screenshot();
+      });
       
-  // it("Login to fail not math username", () => {
-  //       cy.visit(BASE_URL);
-  //       cy.get("#toggle-big-login-landing-drawer-btn").click();
-  //       cy.get(" #username").type("Username0@#413212321");
-  //       cy.get(" #password").type("pass");
-  //       //  cy.get("#remember-user-drawer-checkbox").click();
-  //       cy.get("#setup-user-drawer-submit").click();
-  //       cy.contains(`username must match`).should("exist");
-  //       cy.screenshot();
-  //     });
+  it("Login to fail not math username", () => {
+        cy.visit(BASE_URL);
+        cy.get("#toggle-big-login-landing-drawer-btn").click();
+        cy.get(" #username").type("Username0@#413212321");
+        cy.get(" #password").type("pass");
+        //  cy.get("#remember-user-drawer-checkbox").click();
+        cy.get("#setup-user-drawer-submit").click();
+        cy.contains(`username must match`).should("exist");
+        cy.screenshot();
+      });
 
       // // รีรหัสผ่าน
       // it("Login to fail when password is incorrect to reset password",()=>{
