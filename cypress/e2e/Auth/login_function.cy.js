@@ -9,8 +9,10 @@ export function login(username, password) {
 }
 
 // Use the login function in the test ส่วนที่เรียกใช้
-// describe('Login Test', () => {
-//   it('should login successfully with correct credentials', () => {
-//     login('AumNatthacha', 'Natthacha2002');
-//   });
-// });
+/*
+describe('Login Test', () => {
+  it('should login successfully with correct credentials', () => {
+    login('AumNatthacha', 'Natthacha2002');
+  });
+});
+*/
