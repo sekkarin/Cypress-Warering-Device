@@ -6,16 +6,20 @@ describe("Add Dashboard Test", () => {
 
     //Add Dashboard
     cy.get("#dashboard-nav-link-sidebar").click();
-    // cy.get("#toggle-add-dashboard-dialog-btn").click();
-    // cy.get("#nameDashboard").type("PTT-3");
-    // cy.get('#description').type('PTT-3', { force: true });
-    // cy.get("#submit-add-dashboard-btn").click();
+    /*
+    cy.get("#toggle-add-dashboard-dialog-btn").click();
+    cy.get("#nameDashboard").type("PTT-3");
+    cy.get('#description').type('PTT-3', { force: true });
+    cy.get("#submit-add-dashboard-btn").click();
+    */
 
     //Edit
-    // cy.get("#edit-dashboard-option-6683ad5ec7b871479e6125e1").click();
-    // cy.get("#nameDashboard").clear().type("PT-49");
-    // cy.get("#description").clear({ force: true }).type("PT-49", { force: true });
-    // cy.get("#submit-edit-dashboard-btn").click();
+    /*
+    cy.get("#edit-dashboard-option-6683ad5ec7b871479e6125e1").click();
+    cy.get("#nameDashboard").clear().type("PT-49");
+    cy.get("#description").clear({ force: true }).type("PT-49", { force: true });
+    cy.get("#submit-edit-dashboard-btn").click();
+    */
 
     //DELETED
     cy.get("#delete-dashboard-option-6683ad5ec7b871479e6125e1").click();
