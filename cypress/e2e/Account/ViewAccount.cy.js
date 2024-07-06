@@ -15,9 +15,13 @@ describe("View Account User", () => {
     cy.screenshot();
 
     // delete account 
+    cy.get("#back-to-home-btn").click()
     cy.get("#user-profile-image").click();
     cy.get("#account-user-drawer-nav-link").click();
-    cy.get("").click();
+    cy.get("#delete-account-btn").click();
+    cy.contains("Delete account").should("exist");
+    // cy.get("#submit-delete-account-dialog-btn").click();
+    cy.get("#cancel-delete-account-btn").click();
   });
 
 });
