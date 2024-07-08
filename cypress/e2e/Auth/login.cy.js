@@ -1,7 +1,7 @@
 ///<reference types="cypress" />
 import { user1 } from "../../fixtures/User.json";
 
-const BASE_URL = "http://localhost:5173";
+const BASE_URL = "http://warering.online";
 describe("Login", () => {
   it("login to webpage success fully", () => {
     cy.visit(BASE_URL);
