@@ -24,10 +24,10 @@ describe("Password Reset", () => {
   it("should reset password via email", () => {
     // Visit the password reset page
     cy.visit(BASE_URL); // เข้าสู่หน้าลืมรหัสผ่านของแอปพลิเคชัน
-    cy.get("#open-big-login-drawer").click(); // เปิดหน้าต่างล็อกอินใหญ่
-    cy.get("div:nth-child(1) > .flex #forget-pass-btn").click(); // คลิกที่ปุ่ม "Forget password"
+    cy.get("#toggle-big-login-landing-drawer-btn").click(); // เปิดหน้าต่างล็อกอินใหญ่
+    cy.get("#forget-pass-drawer-btn").click(); // คลิกที่ปุ่ม "Forget password"
     cy.get("#email_forget_password").type("644259036@webmail.npru.ac.th"); // ใส่อีเมลล์
-    cy.get("#forget-pass-submit").click(); // คลิกปุ่มส่ง
+    cy.get("#forget-pass-drawer-submit").click(); // คลิกปุ่มส่ง
 
     // Fetch the reset email
     cy.task("fetchResetEmail", "644259036@webmail.npru.ac.th").then((email) => {
@@ -41,7 +41,7 @@ describe("Password Reset", () => {
       // Enter new password
       cy.get("#newPassword").type("Newpassword123");
     
-      cy.get("#reset-password-submit").click();
+      cy.get("#reset-password-submit-btn").click();
     
       cy.contains("Password reset successful").should("be.visible");
     });
