@@ -9,6 +9,7 @@ lerna-debug.log*
 
 node_modules
 screenshost
+image 
 dist
 dist-ssr
 *.local
