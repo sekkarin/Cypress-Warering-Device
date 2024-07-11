@@ -1,24 +1,102 @@
-describe('Login',()=>{
-    it('login to webpage success fully',()=>{
-        cy.visit('https://www.saucedemo.com');
+///<reference types="cypress" />
+import { user1 } from "../../fixtures/User.json";
 
-        cy.get('#user-name').type('standard_user');
+const BASE_URL = "http://warering.online";
+describe("Login", () => {
+  it("login to webpage success fully", () => {
+    cy.visit(BASE_URL);
+    cy.get("#toggle-big-login-landing-drawer-btn").click();
+    cy.get("#username").click();
+    cy.get("#username").type("boat");
+    cy.get("#password").type("19092545Boat");
+    // cy.get('#password').type("19092545Boat")
+    // cy.get("#remember-user-drawer-checkbox").click();
+    cy.get("#setup-user-drawer-submit").click();
+    // cy.get("h1").should("contain", "Overview");
+    cy.screenshot();
 
-        cy.get('#password').type('secret_sauce');
+  });
+  it("Login to fail when not verify email", () => {
+    cy.visit(BASE_URL);
+    cy.get("#toggle-big-login-landing-drawer-btn").click();
+    cy.get(" #username").type(`${user1.username}`);
+    cy.get(" #password").type(`Password123456`);
+  // cy.get("#remember-user-drawer-checkbox").click();
+  cy.get("#setup-user-drawer-submit").click();
+    cy.contains("Please verify your e-mail first").should("exist");
+    // cy.contains("Password is incorrect").should("exist");
+    cy.screenshot();
+  });
+  
+  it("Login to fail when password is incorrect", () => {
+    cy.visit(BASE_URL);
+    cy.get("#toggle-big-login-landing-drawer-btn").click();
+    cy.get(" #username").type(`${user1.username}`);
+    cy.get(" #password").type(`fkfkfkfk`);
+  // cy.get("#remember-user-drawer-checkbox").click();
+  cy.get("#setup-user-drawer-submit").click();
+    cy.contains("Please verify your e-mail first").should("exist");
+    // cy.contains("Password is incorrect").should("exist");
+    cy.screenshot();
+  });
 
-        cy.get('#login-button').click('');
-
-        cy.screenshot('');
-    })
-    it('login to webpage with error ',()=>{
-        cy.visit('https://www.saucedemo.com');
-
-        cy.get('#user-name').type('invalid_user');
-
-        cy.get('#password').type('secret_sauce');
-
-        cy.get('#login-button').click();
-        
+  
+  it("Login to fail when password is not long", () => {
+    cy.visit(BASE_URL);
+    cy.get("#toggle-big-login-landing-drawer-btn").click();
+    cy.get(" #username").type(`${user1.firstName}`);
+    cy.get(" #password").type("pass");
+  // cy.get("#remember-user-drawer-checkbox").click();
+  cy.get("#setup-user-drawer-submit").click();
+    cy.contains("password must be longer than or equal to 8 characters").should(
+      "exist"
+      );
+      cy.screenshot();
+    });
+    
+  it("Login to fail no have a username", () => {
+      cy.visit(BASE_URL);
+      cy.get("#toggle-big-login-landing-drawer-btn").click();
+      
+      cy.get(" #password").type(`${user1.password}`);
+  // cy.get("#remember-user-drawer-checkbox").click();
+  cy.get("#setup-user-drawer-submit").click();
+      cy.contains("Please provide all value").should("exist");
+      cy.screenshot();
+    });
+    
+  it("Login to fail no have a password", () => {
+      cy.visit(BASE_URL);
+      cy.get("#toggle-big-login-landing-drawer-btn").click();
+      cy.get(" #username").type(`${user1.username}`);
+          // cy.get("#remember-user-drawer-checkbox").click();
+    cy.get("#setup-user-drawer-submit").click();
+        cy.contains("Please provide all value").should("exist");
         cy.screenshot();
-    })
-})
+      });
+      
+  it("Login to fail not math username", () => {
+        cy.visit(BASE_URL);
+        cy.get("#toggle-big-login-landing-drawer-btn").click();
+        cy.get(" #username").type("Username0@#413212321");
+        cy.get(" #password").type("pass");
+        //  cy.get("#remember-user-drawer-checkbox").click();
+        cy.get("#setup-user-drawer-submit").click();
+        cy.contains(`username must match`).should("exist");
+        cy.screenshot();
+      });
+
+      // // รีรหัสผ่าน
+      // it("Login to fail when password is incorrect to reset password",()=>{
+      //   cy.visit(BASE_URL);
+      //   cy.contains("Sign In").click();
+      //   cy.get("div:nth-child(1) > .relative > #username").type(`${user1.username}`);
+      //   cy.get("div:nth-child(1) > .relative > #password").type(`fkfkfkfk`);
+      //   cy.get("div:nth-child(1) > #setup-user-submit").click();
+      //   cy.get("div:nth-child(1) > .flex #forget-pass-btn").click();
+      //   cy.get("#email_forget_password").type(`${user1.email}`);
+      //   // cy.get("forget-pass-submit").click();
+    
+      // })
+    });
+    
