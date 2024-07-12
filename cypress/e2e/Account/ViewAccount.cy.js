@@ -6,7 +6,7 @@ describe("View Account User", () => {
     // login account
     cy.contains("Sign In").click();
     cy.get("div:nth-child(1) > .relative > #username").type("ken");
-    cy.get("div:nth-child(1) > .relative > #password").type("");
+    cy.get("div:nth-child(1) > .relative > #password").type("Password123");
     cy.get("#setup-user-drawer-submit").click();
     
     // view account
