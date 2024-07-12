@@ -1,4 +1,6 @@
-const BASE_URL = "http://localhost:5173";
+const BASE_URL = 
+// "http://warering.online/",
+"http://localhost:5173/";
 function extractResetLinkFromEmail(email) {
   // ประมวลผลข้อความอีเมลเพื่อหาลิงก์การรีเซ็ตรหัสผ่าน
   const resetLinkRegex = /https?:\/\/[^\\'">\s]+/i;

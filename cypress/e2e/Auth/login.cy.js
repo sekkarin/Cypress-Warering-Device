@@ -1,14 +1,14 @@
 ///<reference types="cypress" />
 import { user1 } from "../../fixtures/User.json";
 
-const BASE_URL = "http://warering.online";
+const BASE_URL = "http://warering.online/";
 describe("Login", () => {
   it("login to webpage success fully", () => {
     cy.visit(BASE_URL);
     cy.get("#toggle-big-login-landing-drawer-btn").click();
     cy.get("#username").click();
-    cy.get("#username").type("boat");
-    cy.get("#password").type("19092545Boat");
+    cy.get("#username").type("ken");
+    cy.get("#password").type("Password123");
     // cy.get('#password').type("19092545Boat")
     // cy.get("#remember-user-drawer-checkbox").click();
     cy.get("#setup-user-drawer-submit").click();
@@ -19,8 +19,8 @@ describe("Login", () => {
   it("Login to fail when not verify email", () => {
     cy.visit(BASE_URL);
     cy.get("#toggle-big-login-landing-drawer-btn").click();
-    cy.get(" #username").type(`${user1.username}`);
-    cy.get(" #password").type(`Password123456`);
+    cy.get(" #username").type("boat");
+    cy.get(" #password").type(`19092545Boat`);
   // cy.get("#remember-user-drawer-checkbox").click();
   cy.get("#setup-user-drawer-submit").click();
     cy.contains("Please verify your e-mail first").should("exist");
@@ -31,12 +31,11 @@ describe("Login", () => {
   it("Login to fail when password is incorrect", () => {
     cy.visit(BASE_URL);
     cy.get("#toggle-big-login-landing-drawer-btn").click();
-    cy.get(" #username").type(`${user1.username}`);
+    cy.get(" #username").type(`ken`);
     cy.get(" #password").type(`fkfkfkfk`);
   // cy.get("#remember-user-drawer-checkbox").click();
   cy.get("#setup-user-drawer-submit").click();
-    cy.contains("Please verify your e-mail first").should("exist");
-    // cy.contains("Password is incorrect").should("exist");
+    cy.contains("Password is incorrect").should("exist");
     cy.screenshot();
   });
 
@@ -47,6 +46,7 @@ describe("Login", () => {
     cy.get(" #username").type(`${user1.firstName}`);
     cy.get(" #password").type("pass");
   // cy.get("#remember-user-drawer-checkbox").click();
+  cy.wait(2000)
   cy.get("#setup-user-drawer-submit").click();
     cy.contains("password must be longer than or equal to 8 characters").should(
       "exist"
