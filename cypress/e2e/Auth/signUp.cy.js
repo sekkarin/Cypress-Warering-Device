@@ -62,7 +62,7 @@ import { user1 } from "../../fixtures/User.json";
     );
 
     cy.get("#agree-term-and-conditions-drawer-checkbox").click();
-    cy.wait(10000)
+    cy.wait(15000)
     cy.get("#setup-user-drawer-submit").click();
 
     cy.contains("username has been used").should("exist");
@@ -87,7 +87,7 @@ import { user1 } from "../../fixtures/User.json";
     cy.get(" #confirm_password").type("passEz");
 
     cy.get("#agree-term-and-conditions-drawer-checkbox").click();
-    cy.wait(10000)
+    cy.wait(15000)
     cy.get("#setup-user-drawer-submit").click();
 
     cy.contains("password too weak").should("exist");
@@ -112,7 +112,7 @@ import { user1 } from "../../fixtures/User.json";
     );
 
     cy.get("#agree-term-and-conditions-drawer-checkbox").click();
-    cy.wait(10000)
+    cy.wait(15000)
     cy.get("#setup-user-drawer-submit").click();
 
     cy.contains(
@@ -139,7 +139,7 @@ import { user1 } from "../../fixtures/User.json";
     );
 
     cy.get("#agree-term-and-conditions-drawer-checkbox").click();
-    cy.wait(10000)
+    cy.wait(15000)
     cy.get("#setup-user-drawer-submit").click();
 
     cy.contains(
