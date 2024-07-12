@@ -5,7 +5,7 @@ describe("Edit account", () => {
     cy.visit(BASE_URL);
     // login account
     cy.contains("Sign In").click();
-    cy.get("div:nth-child(1) > .relative > #username").type("boat");
+    cy.get("div:nth-child(1) > .relative > #username").type("boat3");
     cy.get("div:nth-child(1) > .relative > #password").type("19092545Boat");
     cy.get("#setup-user-drawer-submit").click();
     // edit Name
@@ -27,7 +27,7 @@ describe("Edit account", () => {
     cy.visit(BASE_URL);
     // login account
     cy.contains("Sign In").click();
-    cy.get("div:nth-child(1) > .relative > #username").type("boat");
+    cy.get("div:nth-child(1) > .relative > #username").type("boat3");
     cy.get("div:nth-child(1) > .relative > #password").type("19092545Boat");
     cy.get("#setup-user-drawer-submit").click();
     // edit Name
