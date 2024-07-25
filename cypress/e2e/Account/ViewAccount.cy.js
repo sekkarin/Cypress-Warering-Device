@@ -1,12 +1,12 @@
-const BASE_URL = "http://warering.online/";
+const BASE_URL = "http://localhost:5173/";
 describe("View Account User", () => {
   it("view and deleted account ", () => {
     cy.visit(BASE_URL);
     
     // login account
     cy.contains("Sign In").click();
-    cy.get("div:nth-child(1) > .relative > #username").type("ken");
-    cy.get("div:nth-child(1) > .relative > #password").type("Password123");
+    cy.get("div:nth-child(1) > .relative > #username").type("boat");
+    cy.get("div:nth-child(1) > .relative > #password").type("19092545Boat");
     cy.get("#setup-user-drawer-submit").click();
     
     // view account
