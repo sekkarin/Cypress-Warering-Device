@@ -1,7 +1,7 @@
 import { login } from "./spec.cy";
 
 describe("Dashboard Test", () => {
-  it("should login successfully with correct credentials and perform device operations", () => {
+  it("TC6001 should login successfully with correct credentials and perform device operations", () => {
     login("boat", "19092545Boat");
 
     //Add Dashboard
@@ -16,11 +16,12 @@ describe("Dashboard Test", () => {
     cy.contains("Your PTT-3 dashboard has been added").should("exist");
     cy.screenshot();
   });
-  it(" user can edit device", () => {
+
+  it("TC6002 user can edit device", () => {
     login("boat", "19092545Boat");
     cy.get("#dashboard-nav-link-sidebar").click();
     // เลือก id ที่จะทำการ edit
-    cy.get("#edit-dashboard-option-66a34593a44d44eda5c81438").click();
+    cy.contains("Edit").click();
     cy.get("#nameDashboard").clear().type(`PTT-45`);
     cy.get("#description")
       .clear({ force: true })
@@ -30,21 +31,38 @@ describe("Dashboard Test", () => {
     cy.screenshot();
   });
 
-  it(" user can Delete device", () => {
+  it("TC6003 user can Delete device", () => {
     login("boat", "19092545Boat");
-    // เลือก id ที่จะทำการ Delete
-    cy.get("#delete-dashboard-option-66a34593a44d44eda5c81438").click();
+    cy.get("#dashboard-nav-link-sidebar").click();
+    
+    cy.contains("Delete").click();
     cy.wait(2000);
     cy.get("#confirm-delete-dashboard-btn").click();
     cy.screenshot();
   });
 
-  it(" user can Search Dashboard",()=>{
+  it("TC6004 user can Search Dashboard",()=>{
     login("boat", "19092545Boat");
     cy.get("#dashboard-nav-link-sidebar").click();
     cy.get("#search_dashboard").click();
     cy.get("#search_dashboard").type("PTT-45")
     cy.contains("PTT-45").should('exist')
     cy.screenshot(); 
+  })
+  
+  it("TC6005 user can Filter Sort by Date Oldest",()=>{
+    login("boat", "19092545Boat");
+    cy.get("#dashboard-nav-link-sidebar").click();
+    cy.get("#sort-by-createdAt").select("Oldest");
+    cy.contains("19/07/2567").should('exist')
+    cy.screenshot();
+  })
+
+  it("TC6005 user can Filter Sort by Date Latest",()=>{
+    login("boat", "19092545Boat");
+    cy.get("#dashboard-nav-link-sidebar").click();
+    cy.get("#sort-by-createdAt").select("Latest");
+    cy.contains("13/09/2567").should('exist')
+    cy.screenshot();
   })
 });
