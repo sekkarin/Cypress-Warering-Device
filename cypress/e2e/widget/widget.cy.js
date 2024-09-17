@@ -47,8 +47,8 @@ describe("widget in device", () => {
     cy.contains("Sensor_01").click();
     cy.get("#toggle-add-widget-dialog-btn").click();
     cy.get("#select_widget").select("MessageBox");
-
-    cy.get("#value").type("ความร้อน");
+    cy.get("#label").type("อุณหภูมิ")
+    // cy.get("#value").type("ความร้อน");
     cy.get("#unit").type("องศา");
     cy.get("#add-widget-submit-btn").click();
     cy.contains("Please provide a value").should("exist");
