@@ -77,5 +77,4 @@ describe("Edit account", () => {
   //   cy.get("#remove-user-profile-btn").click();
   // });
 
-  it("", () => {});
 });
