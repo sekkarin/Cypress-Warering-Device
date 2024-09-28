@@ -33,14 +33,15 @@ module.exports = defineConfig({
       });
     },
   },
-  "reporter": "nyan",
+  reporter: "nyan",
   // "reporter": "mochawesome",
-  "reporterOptions": {
-    "reportDir": "cypress/reports/mochawesome-report",
-    "overwrite": false,
-    "html": true,
-    "json": true,
-    "timestamp": "mmddyyyy_HHMMss",
+  reporterOptions: {
+    reportDir: "cypress/reports/mochawesome-report",
+    overwrite: false,
+    html: true,
+    json: true,
+    timestamp: "mmddyyyy_HHMMss",
   },
   screenshotsFolder: "cypress/screenshots/",
+  video: true,
 });

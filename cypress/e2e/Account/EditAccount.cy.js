@@ -1,4 +1,4 @@
-const BASE_URL = "http://warering.online/";
+const BASE_URL = "http://localhost:5173/home";
 describe("Edit account", () => {
   // เปลี่ยนชื่อ สำเร็จ
   it("edit account firstName and lastName", () => {
@@ -53,7 +53,6 @@ describe("Edit account", () => {
   //     })
   //   )
 
-  
   //   เปลี่ยนรูปภาพโปรไฟล์
   it("Chang Photo Profile", () => {
     cy.visit(BASE_URL);
@@ -61,20 +60,19 @@ describe("Edit account", () => {
     cy.contains("Sign In").click();
     cy.get("div:nth-child(1) > .relative > #username").type("boat3");
     cy.get("div:nth-child(1) > .relative > #password").type("19092545Boat");
-    cy.wait(5000)
+    cy.wait(5000);
     cy.get("#setup-user-drawer-submit").click();
     // กดเข้าหน้า account
     cy.get("#user-profile-image").click();
     cy.get("#edit-profile-drawer-nav-link").click();
 
     cy.get("#update-user-profile-btn").click();
-    cy.wait(2000)
+    cy.wait(2000);
     cy.get("#file-drop-zone").click();
-    cy.wait(5000)
+    cy.wait(5000);
   });
   // //   ลบรูปภาพโปรไฟล์
   // it("Delete Photo Profile", () => {
   //   cy.get("#remove-user-profile-btn").click();
   // });
-
 });

@@ -1,38 +1,20 @@
 const BASE_URL = "";
 import { user1 } from "../../fixtures/User.json";
-  describe("SignUp", () => {
+describe("SignUp", () => {
   // signUp Success fully
   it("TC1001 sigh up to webpage success fully", function () {
     cy.visit(BASE_URL);
-
     cy.get("#toggle-big-register-landing-drawer-btn").click();
-    cy.get("#username").type(
-      `usernameTest${new Date().getSeconds()}`
-    );
-    cy.get(" #firstName").type(
-      `${user1.firstName}`
-    );
-    cy.get(" #lastName").type(
-      `${user1.lastName}`
-    );
-    cy.get(" #email").type(
-      `emailTest${new Date().getSeconds()}@test.com`
-    
-    );
-    cy.get(" #password").type(
-      `${user1.password}`
-    );
-    cy.get(" #confirm_password").type(
-      `${user1.confirmPassword}`
-    );
+    cy.get(" #username").type(`${user1.username}`);
+    cy.get(" #firstName").type(`${user1.firstName}`);
+    cy.get(" #lastName").type(`${user1.lastName}`);
+    cy.get(" #email").type(`emailTest${new Date().getSeconds()}@test.com`);
+    cy.get(" #password").type(`${user1.password}`);
+    cy.get(" #confirm_password").type(`${user1.confirmPassword}`);
     cy.get("#agree-term-and-conditions-drawer-checkbox").click();
-    // cy.wait(2000);
     cy.get("#setup-user-drawer-submit").click();
     cy.contains("Creating your account...").should("exist");
-    // cy.wait(3000);
-    // cy.contains("Created your account and Please verify your email").should(
-    //   "exist"
-    // );
+
     cy.screenshot();
   });
 
@@ -42,22 +24,12 @@ import { user1 } from "../../fixtures/User.json";
     cy.visit(BASE_URL);
 
     cy.get("#toggle-big-register-landing-drawer-btn").click();
-    cy.get(" #username").type(
-      `${user1.username}`
-    );
-    cy.get(" #firstName").type(
-      `${user1.firstName}`
-    );
-    cy.get(" #lastName").type(
-      `${user1.lastName}`
-    );
+    cy.get(" #username").type(`${user1.username}`);
+    cy.get(" #firstName").type(`${user1.firstName}`);
+    cy.get(" #lastName").type(`${user1.lastName}`);
     cy.get(" #email").type(`${user1.email}`);
-    cy.get(" #password").type(
-      `${user1.password}`
-    );
-    cy.get(" #confirm_password").type(
-      `${user1.confirmPassword}`
-    );
+    cy.get(" #password").type(`${user1.password}`);
+    cy.get(" #confirm_password").type(`${user1.confirmPassword}`);
 
     cy.get("#agree-term-and-conditions-drawer-checkbox").click();
     // cy.wait(15000)
@@ -71,15 +43,9 @@ import { user1 } from "../../fixtures/User.json";
   it("TC1003 sign Up to fail password not match so Ez ", () => {
     cy.visit(BASE_URL);
     cy.get("#toggle-big-register-landing-drawer-btn").click();
-    cy.get(" #username").type(
-      `${user1.username}`
-    );
-    cy.get(" #firstName").type(
-      `${user1.firstName}`
-    );
-    cy.get(" #lastName").type(
-      `${user1.lastName}` 
-    );
+    cy.get(" #username").type(`${user1.username}`);
+    cy.get(" #firstName").type(`${user1.firstName}`);
+    cy.get(" #lastName").type(`${user1.lastName}`);
     cy.get(" #email").type(`${user1.email}`);
     cy.get(" #password").type("passEz");
     cy.get(" #confirm_password").type("passEz");
@@ -101,13 +67,9 @@ import { user1 } from "../../fixtures/User.json";
     );
     cy.get(" #firstName").type("firstName");
     cy.get(" #lastName").type("lastName");
-    cy.get(" #email").type(
-      `emailTest${new Date().getSeconds()}@test.com`
-    );
+    cy.get(" #email").type(`emailTest${new Date().getSeconds()}@test.com`);
     cy.get(" #password").type(`Passwrod1234`);
-    cy.get(" #confirm_password").type(
-      `Passwrod1234`
-    );
+    cy.get(" #confirm_password").type(`Passwrod1234`);
 
     cy.get("#agree-term-and-conditions-drawer-checkbox").click();
     // cy.wait(15000)
@@ -123,29 +85,21 @@ import { user1 } from "../../fixtures/User.json";
     cy.visit(BASE_URL);
 
     cy.get(`#toggle-big-register-landing-drawer-btn`).click();
-    cy.get(" #username").type(
-      "usernameTest*$%^&**--+-*"
-    );
+    cy.get(" #username").type("usernameTest*$%^&**--+-*");
     cy.get(" #firstName").type("firstName");
     cy.get(" #lastName").type("lastName");
-    cy.get(" #email").type(
-      `emailTest${new Date().getSeconds()}@test.com`
-    );
+    cy.get(" #email").type(`emailTest${new Date().getSeconds()}@test.com`);
     cy.get(" #password").type(`Password1234`);
-    cy.get(" #confirm_password").type(
-      `Password1234`
-    );
+    cy.get(" #confirm_password").type(`Password1234`);
 
     cy.get("#agree-term-and-conditions-drawer-checkbox").click();
     // cy.wait(15000)
     cy.get("#setup-user-drawer-submit").click();
 
-    cy.contains(
-      `username must match`
-    ).should("exist");
+    cy.contains(`username must match`).should("exist");
     cy.screenshot();
   });
-  
+
   // // password กับ confirmPassword ไม่ตรงกัน
   it("TC1006 sign up to fail password not match", () => {
     cy.visit(BASE_URL);
@@ -154,13 +108,9 @@ import { user1 } from "../../fixtures/User.json";
     cy.get(" #username").type(`usernameTest`);
     cy.get(" #firstName").type("firstName");
     cy.get(" #lastName").type("lastName");
-    cy.get(" #email").type(
-      `emailTest${new Date().getSeconds()}@test.com`
-    );
+    cy.get(" #email").type(`emailTest${new Date().getSeconds()}@test.com`);
     cy.get(" #password").type("Password1234");
-    cy.get(" #confirm_password").type(
-      `Password123433`
-    );
+    cy.get(" #confirm_password").type(`Password123433`);
 
     cy.get("#agree-term-and-conditions-drawer-checkbox").click();
     // cy.wait(10000)

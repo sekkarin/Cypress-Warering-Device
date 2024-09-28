@@ -3,27 +3,46 @@ import { user1 } from "../../fixtures/User.json";
 
 const BASE_URL = "http://localhost:5173/home";
 describe("Login", () => {
+  // {
+  //   "_id": {
+  //     "$oid": "66e3bda018e1a3bf3f64ad6c"
+  //   },
+  //   "firstName": "Sekkarin",
+  //   "lastName": "Singhayoo",
+  //   "username": "Sekkarin",
+  //   "password": "$2b$10$bmVQccx5yAyCA6U6mi0I5eCQh9jZ9Gad1lCJwGO.Qr.tz3XEnRkwC",
+  //   "email": "sekkarin.s@gmail.com",
+  //   "roles": [
+  //     "user"
+  //   ],
+  //   "isActive": true,
+  //   "verifired": true,
+  //   "createdAt": {
+  //     "$date": "2024-09-13T04:20:48.808Z"
+  //   },
+  //   "updatedAt": {
+  //     "$date": "2024-09-25T05:52:36.819Z"
+  //   },
+  //   "__v": 0,
+  //   "profileUrl": "https://warering-project.s3.ap-southeast-1.amazonaws.com/1727243556392-1727243556344_wallpaper.png"
+  // }
+
   it("TC2001 login to webpage successfully", () => {
     cy.visit(BASE_URL);
     cy.get("#toggle-big-login-landing-drawer-btn").click();
-    // cy.get("#username").click();
-    cy.get("#username").type("boat");
-    cy.get("#password").type("19092545Boat");
-    // cy.get('#password').type("19092545Boat")
-    // cy.get("#remember-user-drawer-checkbox").click();
+    cy.get("#username").type("AdminWareringCaxknsa");
+    cy.get("#password").type("kmsad9ASdjas0LSJWd9iaa");
     cy.get("#setup-user-drawer-submit").click();
     cy.contains("Overview").should("exist");
-    // cy.get("h1").should("contain", "Overview");
     cy.screenshot();
-
   });
   it("TC2002 Login to fail when not verify email", () => {
     cy.visit(BASE_URL);
     cy.get("#toggle-big-login-landing-drawer-btn").click();
-    cy.get(" #username").type("Usernametest");
-    cy.get(" #password").type(`Test12345`);
-  // cy.get("#remember-user-drawer-checkbox").click();
-  cy.get("#setup-user-drawer-submit").click();
+    cy.get(" #username").type(user1.username);
+    cy.get(" #password").type(user1.password);
+    // cy.get("#remember-user-drawer-checkbox").click();
+    cy.get("#setup-user-drawer-submit").click();
     cy.contains("Please verify your e-mail first").should("exist");
     // cy.contains("Password is incorrect").should("exist");
     cy.screenshot();
@@ -32,10 +51,10 @@ describe("Login", () => {
   it("TC2003 Login to fail when password is incorrect", () => {
     cy.visit(BASE_URL);
     cy.get("#toggle-big-login-landing-drawer-btn").click();
-    cy.get(" #username").type(`boat`);
+    cy.get(" #username").type(`AdminWareringCaxknsa`);
     cy.get(" #password").type(`fkfkfkfk`);
-  // cy.get("#remember-user-drawer-checkbox").click();
-  cy.get("#setup-user-drawer-submit").click();
+    // cy.get("#remember-user-drawer-checkbox").click();
+    cy.get("#setup-user-drawer-submit").click();
     cy.contains("Password is incorrect").should("exist");
     cy.screenshot();
   });
@@ -45,35 +64,35 @@ describe("Login", () => {
     cy.get("#toggle-big-login-landing-drawer-btn").click();
     cy.get(" #username").type("usertest1");
     cy.get(" #password").type("pass");
-  // cy.get("#remember-user-drawer-checkbox").click();
-  cy.wait(2000)
-  cy.get("#setup-user-drawer-submit").click();
+    // cy.get("#remember-user-drawer-checkbox").click();
+    cy.wait(2000);
+    cy.get("#setup-user-drawer-submit").click();
     cy.contains("password must be longer than or equal to 8 characters").should(
       "exist"
-      );
-      cy.screenshot();
-    });
+    );
+    cy.screenshot();
+  });
 
   it("TC2005 Login to fail no have a username", () => {
-      cy.visit(BASE_URL);
-      cy.get("#toggle-big-login-landing-drawer-btn").click();
+    cy.visit(BASE_URL);
+    cy.get("#toggle-big-login-landing-drawer-btn").click();
 
-      cy.get(" #password").type(`${user1.password}`);
-  // cy.get("#remember-user-drawer-checkbox").click();
-  cy.get("#setup-user-drawer-submit").click();
-      cy.contains("Please provide all value").should("exist");
-      cy.screenshot();
-    });
+    cy.get(" #password").type(`${user1.password}`);
+    // cy.get("#remember-user-drawer-checkbox").click();
+    cy.get("#setup-user-drawer-submit").click();
+    cy.contains("Please provide all value").should("exist");
+    cy.screenshot();
+  });
 
   it("TC2006 Login to fail no have a password", () => {
-      cy.visit(BASE_URL);
-      cy.get("#toggle-big-login-landing-drawer-btn").click();
-      cy.get(" #username").type(`${user1.username}`);
-          // cy.get("#remember-user-drawer-checkbox").click();
+    cy.visit(BASE_URL);
+    cy.get("#toggle-big-login-landing-drawer-btn").click();
+    cy.get(" #username").type(`${user1.username}`);
+    // cy.get("#remember-user-drawer-checkbox").click();
     cy.get("#setup-user-drawer-submit").click();
-        cy.contains("Please provide all value").should("exist");
-        cy.screenshot();
-      });
+    cy.contains("Please provide all value").should("exist");
+    cy.screenshot();
+  });
 
   it("TC2007 Login to fail not math username", () => {
     cy.visit(BASE_URL);

@@ -1,7 +1,7 @@
 import { login } from "./spec.cy";
 describe("widget in device", () => {
   it("TC5001 Add widget", () => {
-    login("boat", "19092545Boat");
+    login("Sekkarin", "Password1234");
     cy.get("#devices-nav-link-sidebar").click();
     cy.contains("Sensor_01").click();
     cy.get("#toggle-add-widget-dialog-btn").click();
@@ -17,7 +17,7 @@ describe("widget in device", () => {
   });
 
   it("TC5002 Edit Widget", () => {
-    login("boat", "19092545Boat");
+    login("Sekkarin", "Password1234");
     cy.get("#devices-nav-link-sidebar").click();
     cy.contains("Sensor_01").click();
     cy.get("#66daa9b8baaef97bf34ce2b4-message-box-device-options").click();
@@ -31,7 +31,7 @@ describe("widget in device", () => {
   });
 
   it("TC5003 Delete Widget", () => {
-    login("boat", "19092545Boat");
+    login("Sekkarin", "Password1234");
     cy.get("#devices-nav-link-sidebar").click();
     cy.contains("Sensor_01").click();
     cy.get("#66daad7dbaaef97bf34ce4a4-message-box-device-options").click();
@@ -42,12 +42,12 @@ describe("widget in device", () => {
   });
 
   it("TC5004 not have label", () => {
-    login("boat", "19092545Boat");
+    login("Sekkarin", "Password1234");
     cy.get("#devices-nav-link-sidebar").click();
     cy.contains("Sensor_01").click();
     cy.get("#toggle-add-widget-dialog-btn").click();
     cy.get("#select_widget").select("MessageBox");
-    cy.get("#label").type("อุณหภูมิ")
+    cy.get("#label").type("อุณหภูมิ");
     // cy.get("#value").type("ความร้อน");
     cy.get("#unit").type("องศา");
     cy.get("#add-widget-submit-btn").click();
@@ -56,13 +56,13 @@ describe("widget in device", () => {
   });
 
   it("TC5005 not have Value", () => {
-    login("boat", "19092545Boat");
+    login("Sekkarin", "Password1234");
     cy.get("#devices-nav-link-sidebar").click();
     cy.contains("Sensor_01").click();
     cy.get("#toggle-add-widget-dialog-btn").click();
     cy.get("#select_widget").select("MessageBox");
     cy.get("#label").type("อุณหภูมิ");
-                                                                             
+
     cy.get("#unit").type("องศา");
     cy.get("#add-widget-submit-btn").click();
     cy.contains("Please provide a value").should("exist");
@@ -70,10 +70,9 @@ describe("widget in device", () => {
   });
 
   it("TC5006 not have Unit", () => {
-    login("boat", "19092545Boat");
+    login("Sekkarin", "Password1234");
     cy.get("#devices-nav-link-sidebar").click();
     cy.contains("Sensor_01").click();
     cy.get("#toggle-add-widget-dialog-btn").click();
-    
   });
 });
