@@ -32,7 +32,7 @@ describe("SignUp", () => {
     cy.get(" #confirm_password").type(`${user1.confirmPassword}`);
 
     cy.get("#agree-term-and-conditions-drawer-checkbox").click();
-    // cy.wait(15000)
+  
     cy.get("#setup-user-drawer-submit").click();
 
     cy.contains("username has been used").should("exist");
